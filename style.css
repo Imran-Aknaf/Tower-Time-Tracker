@@ -1,0 +1,96 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background-color: #1e2629;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /*h1 and .towers are stacked above each other*/
+
+  height: 100vh;
+  padding: 24px;
+}
+
+h1 {
+  color: #a3be8c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  /*h1 element has a default top/bottom margin of 21px. Issue is at the top we already have the body padding of 20px. If we don't do that we will get a space on top of the title of 21+20=41px*/
+}
+
+.towers {
+  flex-grow: 1;
+  /*Make the towers main container fill ALL remaining space over the flex axis. Here axis is column, so it will stretch vertically to fill the remaining space.*/
+  /*This has no effect on width, this is why we do :*/
+  width: 100%;
+
+  /*Start a new flex to organise category's title, tower and button*/
+  display: flex;
+  flex-direction: row;
+  /* Aligns the childrens (tower-container) side-by-side */
+  gap: 20px;
+}
+
+.tower-container {
+  flex: 1;
+  /* This basically means each children will have flex : 1 and thus they will all distributes the available horizontal space equally*/
+  display: flex;
+  flex-direction: column;
+  /* Stacks h3, .tower, and button vertically inside this container */
+  background: #273338;
+  border: 1px solid #34444b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.tower-container>h3 {
+  color: #eceff4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tower {
+  flex-grow: 1;
+  /* Pushes the button to the absolute bottom of the container and take as much vertical space as possible basically */
+  background: #1f2a2e;
+  margin: 15px 0;
+  /*because we take as much space as possible, without top/bottom margin we will touch the button border*/
+  border-radius: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  /* Removes the ugly default browser border */
+  border-radius: 8px;
+}
+
+/* Specific Tracker Button Styles */
+.play-pause-btn {
+  padding: 12px;
+  background-color: #618764;
+  color: white;
+  /* Makes the button fill the width of the card */
+  transition: background-color 0.2s ease;
+  /*Propriety, Duration, easing style (optional), delay (optional)*/
+  /*Transition cleanly to hover color with this animation*/
+}
+
+.play-pause-btn:hover {
+  background-color: #4a684c;
+  /* Darkens slightly when hovered */
+}
+
+.play-pause-btn:active {
+  transform: scale(0.98);
+  /* Squeezes slightly down when clicked to feel like a real physical button */
+}
